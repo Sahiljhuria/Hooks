@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from 'react'
+import Aptutorial from './Aptutorial'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import Products  from './Products'
+import { useState } from 'react'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [ProductsData, setProductsData] = useState([]);
+  return(
+    
+    <>
+    <BrowserRouter>
+      <Routes>   
+        <Route>
+              <Route path='/' element={<Aptutorial setlun={setProductsData}/>}/>
+              <Route path='/Products' element={<Products setfun={ProductsData}/>}/>
+          </Route>
+    </Routes>
+    </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default App
